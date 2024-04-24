@@ -1,0 +1,24 @@
+.container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+input[type="text"] {
+    padding: 8px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #ccc;
+    border: none;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: #999;
+}
+
+.hidden {
+    display: none;
+}
