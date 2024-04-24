@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Realtime Database</title>
+    <!-- Firebase JavaScript SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-database.js"></script>
+    <script>
+        // Firebase SDK の初期化
+        const firebaseConfig = {
+            apiKey: "AIzaSyAJsM9rWI8vlCnTc-b2op7BTaBXe2UhE6U",
+            authDomain: "geodemo-96cfb.firebaseapp.com",
+            projectId: "geodemo-96cfb",
+            storageBucket: "geodemo-96cfb.appspot.com",
+            messagingSenderId: "272142305439",
+            appId: "1:272142305439:web:7174a60b7f898f5e6dfaaa"
+        };
+        
+        // データの保存
+        function saveData(name, latitude, longitude) {
+            database.ref('locations').push({
+                name: name,
+                latitude: latitude,
+                longitude: longitude
+            });
+        }
+
+        function submitData() {
+            const nameInput = document.getElementById('name').value;
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    saveData(nameInput, latitude, longitude);
+                    alert("位置情報を送信しました");
+                });
+            } else {
+                alert("位置情報が取得できません");
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- HTMLフォーム -->
+    <div>
+        <label for="name">名前：</label>
+        <input type="text" id="name" placeholder="名前を入力してください">
+        <button onclick="submitData()">位置情報を送信</button>
+    </div>
+</body>
+</html>
