@@ -25,7 +25,7 @@
         
         // データの保存
         function saveData(name, latitude, longitude) {
-            db.collection('locations').add({
+            db.collection('/geo/geo').add({
                 name: name,
                 latitude: latitude,
                 longitude: longitude
