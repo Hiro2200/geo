@@ -12,7 +12,6 @@
         const firebaseConfig = {
           apiKey: "AIzaSyAJsM9rWI8vlCnTc-b2op7BTaBXe2UhE6U",
           authDomain: "geodemo-96cfb.firebaseapp.com",
-          databaseURL: "https://geodemo-96cfb-default-rtdb.asia-southeast1.firebasedatabase.app",
           projectId: "geodemo-96cfb",
           storageBucket: "geodemo-96cfb.appspot.com",
           messagingSenderId: "272142305439",
@@ -21,15 +20,21 @@
 
         firebase.initializeApp(firebaseConfig);
 
-        // Firebase Realtime Database の参照を取得
-        const database = firebase.database();
+        // Firebase Firestore の参照を取得
+        const db = firebase.firestore();
         
         // データの保存
         function saveData(name, latitude, longitude) {
-            database.ref('/geo').set({
+            db.collection('locations').add({
                 name: name,
                 latitude: latitude,
                 longitude: longitude
+            })
+            .then(function(docRef) {
+                console.log("Document written with ID: ", docRef.id);
+            })
+            .catch(function(error) {
+                console.error("Error adding document: ", error);
             });
         }
 
