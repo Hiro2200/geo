@@ -25,10 +25,12 @@
         
         // データの保存
         function saveData(name, latitude, longitude) {
-            db.collection('/geo/geo').add({
+            db.collection("locations").add({
                 name: name,
-                latitude: latitude,
-                longitude: longitude
+                location: {
+                    latitude: latitude,
+                    longitude: longitude
+                 {
             })
             .then(function(docRef) {
                 console.log("Document written with ID: ", docRef.id);
