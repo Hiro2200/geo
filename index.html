@@ -26,7 +26,7 @@
         
         // データの保存
         function saveData(name, latitude, longitude) {
-            database.ref('https://geodemo-96cfb-default-rtdb.asia-southeast1.firebasedatabase.app/').set({
+            database.ref('/geo').set({
                 name: name,
                 latitude: latitude,
                 longitude: longitude
